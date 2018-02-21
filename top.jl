@@ -49,9 +49,10 @@ module Test
 	##############################
 	println("\nBURNIN run\n============")
 	input = String.(chop(readstring(ifile)))
+	println("INPUT = $input")
 	result = input |> _foo |> _bar |> _baz 
 	result =  _goo(_foo(input), result, _bar(_foo(input))) 
-	println("Result is: $(result)")
+	println("OUTPUT = $(result)")
 	
 	store_observer(ob, obfile)
 	# @show ob
@@ -67,9 +68,10 @@ module Test
 	println("\nRUN 1:  same pipeline, no change\n============")
 	ifile = "input.dat"
 	input = String.(chop(readstring(ifile)))
+	println("INPUT = $input")
 	result = input |> _foo |> _bar |> _baz 
 	result =  _goo(_foo(input), result, _bar(_foo(input))) 
-	println("Result is: $(result)")
+	println("OUTPUT = $(result)")
 
 
 	# Run 2: same pipeline, different inputs 
@@ -81,9 +83,10 @@ module Test
 	println("\nRUN 2:  same pipeline, different inputs\n============")
 	ifile = "input2.dat"
 	input = String.(chop(readstring(ifile)))
+	println("INPUT = $input")
 	result = input |> _foo |> _bar |> _baz 
 	result =  _goo(_foo(input), result, _bar(_foo(input))) 
-	println("Result is: $(result)")
+	println("OUTPUT = $(result)")
 
 	store_observer(ob, obfile)
 
@@ -108,9 +111,10 @@ module Test
 	println("\nRUN 3:  same pipeline, baz.jl modified (baz() and goo() impacted)\n============")
 	ifile = "input.dat"
 	input = String.(chop(readstring(ifile)))
+	println("INPUT = $input")
 	result = input |> _foo |> _bar |> _baz 
 	result =  _goo(_foo(input), result, _bar(_foo(input))) 
-	println("Result is:$(result)")
+	println("OUTPUT =$(result)")
 	
 	# revert baz.jl
 	open("baz.jl","w") do x
